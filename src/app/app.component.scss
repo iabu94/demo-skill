@@ -1,0 +1,21 @@
+.main-toolbar {
+  background-color: #1a2c3a;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.sidenav-container {
+  height: calc(100% - 64px);
+}
+
+.sidenav {
+  width: auto;
+  background-color: #1a2c3a;
+  border-radius: 0;
+}
+
+.active {
+  background-color: #65a9e0;
+}
