@@ -3,11 +3,11 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard-page',
+    redirectTo: 'dashboard',
     pathMatch: 'full',
   },
   {
-    path: 'dashboard-page',
+    path: 'dashboard',
     loadComponent: () =>
       import(
         '@demo/dashboard/containers/dashboard-page/dashboard-page.component'
