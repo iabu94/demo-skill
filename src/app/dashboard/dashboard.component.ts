@@ -140,7 +140,7 @@ export class DashboardComponent implements OnInit {
     } else {
       this.store.add(employee);
     }
-    this.drawer()?.close();
+    this.close();
   }
 
   close() {

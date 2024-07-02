@@ -11,6 +11,14 @@ import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { Employee } from '../../models';
 
+const initialState = {
+  id: [''],
+  firstName: ['', Validators.required],
+  lastName: ['', Validators.required],
+  phone: ['', Validators.required],
+  status: [1],
+};
+
 @Component({
   selector: 'app-employee-form',
   standalone: true,
@@ -38,21 +46,19 @@ export class EmployeeFormComponent {
   employeeForm: FormGroup;
 
   constructor() {
-    this.employeeForm = this.fb.group({
-      id: [''],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      phone: ['', Validators.required],
-      status: [1],
-    });
+    this.employeeForm = this.initializeForm();
 
     effect(() => {
       if (this.employee()) {
         this.employeeForm.patchValue(this.employee() as Employee);
       } else {
-        this.employeeForm.reset();
+        this.employeeForm = this.initializeForm();
       }
     });
+  }
+
+  private initializeForm() {
+    return this.fb.group(initialState);
   }
 
   addOrEdit() {
