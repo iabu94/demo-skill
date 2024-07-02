@@ -16,8 +16,13 @@ export const EmployeeStore = signalStore(
   withState(initialState),
   withMethods((store, service = inject(EmployeeService)) => ({
     async getAll() {
-      const employees = await lastValueFrom(service.getEmployees());
-      patchState(store, { employees });
+      try {
+        const employees = await lastValueFrom(service.getEmployees());
+        patchState(store, { employees });
+      } catch (error) {
+        console.error(error);
+        patchState(store, { employees: [] });
+      }
     },
     delete(id: number) {
       patchState(store, state => ({
