@@ -1,5 +1,5 @@
 import { Directive, effect, ElementRef, inject, input } from '@angular/core';
-import { AppInfoStore } from '../store';
+import { AppInfoStore } from '@demo/core/store';
 
 @Directive({
   selector: '[appRtl]',
@@ -10,23 +10,7 @@ export class RtlDirective {
 
   private readonly userInfoStore = inject(AppInfoStore);
 
-  /**
-   * This directive input is used to apply two separate classes for LTR & RTL seperated by `|`.
-   * The left element before the `|` is LTR related class and the right element is RTL related one.
-   * @example <div appRtl rtlClass="normal-icon|rotated-icon"></div>
-   * @constructs `<div class="normal-icon"></div>` will be applied to LTR.
-   * @constructs `<div class="rotated-icon"></div>` will be applied to RTL.
-   */
   appRtl = input<string>('');
-
-  /**
-   * This directive input is used to apply two separate classes for LTR & RTL seperated by `|`.
-   * The left element before the `|` is LTR related class and the right element is RTL related one.
-   * @example <div appRtl rtlClass="normal-icon|rotated-icon"></div>
-   * @constructs `<div class="normal-icon"></div>` will be applied to LTR.
-   * @constructs `<div class="rotated-icon"></div>` will be applied to RTL.
-   * @param value
-   */
   rtlClass = input<string>('');
 
   constructor() {

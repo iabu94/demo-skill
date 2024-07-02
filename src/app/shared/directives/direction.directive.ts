@@ -1,5 +1,5 @@
 import { Directive, HostBinding, inject } from '@angular/core';
-import { AppInfoStore } from '../store';
+import { AppInfoStore } from '@demo/core/store';
 
 @Directive({
   selector: '[appDirection]',

@@ -24,8 +24,8 @@ import {
 } from '@angular/material/menu';
 import { Employee } from '../../models';
 import { TranslateModule } from '@ngx-translate/core';
-import { StatusPipe } from '../../pipes';
-import { StatusDirective } from '../../directives';
+import { StatusPipe } from '@demo/shared/pipes';
+import { StatusDirective } from '@demo/shared/directives';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 
 @Component({

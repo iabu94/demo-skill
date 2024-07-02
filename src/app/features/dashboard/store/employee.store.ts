@@ -1,7 +1,7 @@
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import { Employee } from '../models';
 import { inject } from '@angular/core';
-import { EmployeeService } from '../services';
+import { EmployeeService } from '../../../services';
 import { lastValueFrom } from 'rxjs';
 
 interface EmployeeState {

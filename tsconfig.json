@@ -22,7 +22,34 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@demo/shared/*": [
+        "src/app/shared/*"
+      ],
+      "@demo/core/*": [
+        "src/app/core/*"
+      ],
+      "@demo/dashboard/*": [
+        "src/app/features/dashboard/*"
+      ],
+      "@demo/archive/*": [
+        "src/app/features/archive/*"
+      ],
+      "@demo/employee/*": [
+        "src/app/features/employees/*"
+      ],
+      "@demo/help/*": [
+        "src/app/features/help-center/*"
+      ],
+      "@demo/reports/*": [
+        "src/app/features/reports/*"
+      ],
+      "@demo/settings/*": [
+        "src/app/features/settings/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

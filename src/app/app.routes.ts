@@ -3,41 +3,49 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'dashboard-page',
     pathMatch: 'full',
   },
   {
-    path: 'dashboard',
+    path: 'dashboard-page',
     loadComponent: () =>
-      import('./dashboard/dashboard.component').then(c => c.DashboardComponent),
+      import(
+        '@demo/dashboard/containers/dashboard-page/dashboard-page.component'
+      ).then(c => c.DashboardPageComponent),
   },
   {
     path: 'employees',
     loadComponent: () =>
-      import('./employees/employees.component').then(c => c.EmployeesComponent),
+      import(
+        '@demo/employee/containers/employees-page/employees-page.component'
+      ).then(c => c.EmployeesPageComponent),
   },
   {
-    path: 'report',
+    path: 'reports',
     loadComponent: () =>
-      import('./report/report.component').then(c => c.ReportComponent),
-  },
-  {
-    path: 'admin-settings',
-    loadComponent: () =>
-      import('./admin-settings/admin-settings.component').then(
-        c => c.AdminSettingsComponent
+      import('@demo/reports/containers/report-page/report-page.component').then(
+        c => c.ReportPageComponent
       ),
+  },
+  {
+    path: 'admin-settings-page',
+    loadComponent: () =>
+      import(
+        '@demo/settings/containers/admin-settings-page/admin-settings-page.component'
+      ).then(c => c.AdminSettingsPageComponent),
   },
   {
     path: 'help-center',
     loadComponent: () =>
-      import('./help-center/help-center.component').then(
-        c => c.HelpCenterComponent
-      ),
+      import(
+        '@demo/help/containers/help-center-page/help-center-page.component'
+      ).then(c => c.HelpCenterPageComponent),
   },
   {
     path: 'archive',
     loadComponent: () =>
-      import('./archive/archive.component').then(c => c.ArchiveComponent),
+      import(
+        '@demo/archive/containers/archive-page/archive-page.component'
+      ).then(c => c.ArchivePageComponent),
   },
 ];

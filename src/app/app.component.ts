@@ -21,9 +21,8 @@ import {
 } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { AppInfoStore } from './store';
-import { DirectionDirective } from './directives/direction.directive';
-import { RtlDirective } from './directives/rtl.directive';
+import { AppInfoStore } from '@demo/core/store';
+import { DirectionDirective, RtlDirective } from '@demo/shared/directives';
 
 const LANGUAGES = [
   { value: 'en', label: 'English' },
@@ -63,7 +62,7 @@ const LANGUAGES = [
 export class AppComponent {
   languages = LANGUAGES;
 
-  translate = inject(TranslateService);
+  private translate = inject(TranslateService);
   readonly store = inject(AppInfoStore);
 
   constructor() {
