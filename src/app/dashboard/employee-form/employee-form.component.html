@@ -1,0 +1,50 @@
+<div>
+  <button mat-icon-button (click)="close.emit()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span class="text-xl">New Employee</span>
+</div>
+
+<form [formGroup]="employeeForm" (ngSubmit)="addOrEdit()">
+  <div class="p-3 ">
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input
+        matInput
+        placeholder="Abdullah"
+        formControlName="firstName"
+        required
+      />
+      @if (employeeForm.controls['firstName'].hasError('required')) {
+        <mat-error>First name is required</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Last Name</mat-label>
+      <input
+        matInput
+        placeholder="Mansoor"
+        formControlName="lastName"
+        required
+      />
+      @if (employeeForm.controls['lastName'].hasError('required')) {
+        <mat-error>Last name is required</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Phone Number</mat-label>
+      <input
+        matInput
+        placeholder="0719994818"
+        formControlName="phone"
+        required
+      />
+      @if (employeeForm.controls['phone'].hasError('required')) {
+        <mat-error>Phone number is required</mat-error>
+      }
+    </mat-form-field>
+    <div></div>
+    <button type="button" mat-raised-button (click)="close.emit()">Close</button>
+    <button type="submit" mat-flat-button>Save</button>
+  </div>
+</form>

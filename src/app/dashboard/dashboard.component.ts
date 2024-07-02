@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal, viewChild } from '@angular/core';
 import {
   MatCell,
   MatCellDef,
@@ -11,11 +11,29 @@ import {
   MatRow,
   MatRowDef,
   MatTable,
-  MatTableDataSource,
 } from '@angular/material/table';
 import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
-import { EmployeeService } from '../services';
 import { Employee } from '../models';
+import { MatIconButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import {
+  MatMenu,
+  MatMenuContent,
+  MatMenuItem,
+  MatMenuTrigger,
+} from '@angular/material/menu';
+import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { EmployeeStore } from '../store/employee.store';
+import {
+  MatDrawer,
+  MatDrawerContainer,
+  MatDrawerContent,
+  MatSidenav,
+  MatSidenavContainer,
+} from '@angular/material/sidenav';
+import { MatListItem, MatNavList } from '@angular/material/list';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { EmployeeFormComponent } from './employee-form/employee-form.component';
 
 export interface PeriodicElement {
   name: string;
@@ -55,24 +73,74 @@ const ELEMENT_DATA: PeriodicElement[] = [
     MatRowDef,
     MatHeaderRowDef,
     MatNoDataRow,
+    MatIconButton,
+    MatIcon,
+    MatMenu,
+    MatMenuItem,
+    MatMenuTrigger,
+    MatMenuContent,
+    EmployeeListComponent,
+    MatDrawer,
+    MatDrawerContent,
+    MatDrawerContainer,
+    MatListItem,
+    MatNavList,
+    MatSidenav,
+    RouterLink,
+    RouterLinkActive,
+    MatSidenavContainer,
+    EmployeeFormComponent,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
+  providers: [EmployeeStore],
 })
 export class DashboardComponent implements OnInit {
-  displayedColumns: string[] = ['firstName', 'lastName', 'phone', 'status'];
-  dataSource = new MatTableDataSource<Employee>();
+  readonly store = inject(EmployeeStore);
 
-  employeeService = inject(EmployeeService);
+  employees = signal<Employee[]>([]);
+  searchKey = signal<string>('');
+  selectedEmployee = signal<Employee | undefined>(undefined);
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  drawer = viewChild(MatDrawer);
+
+  constructor() {
+    this.drawer()?.closedStart.subscribe(() => {
+      console.log('closed');
+      this.selectedEmployee.set(undefined);
+    });
   }
 
-  ngOnInit(): void {
-    this.employeeService.getEmployees().subscribe(data => {
-      this.dataSource = new MatTableDataSource(data);
-    });
+  applyFilter(event: Event) {
+    this.searchKey.set(
+      (event.target as HTMLInputElement).value.trim().toLowerCase()
+    );
+  }
+
+  async ngOnInit() {
+    await this.store.getAll();
+  }
+
+  remove(id: number) {
+    this.store.delete(id);
+  }
+
+  edit(id: number) {
+    this.selectedEmployee.set(this.store.employees().find(e => e.id === id));
+    this.drawer()?.open();
+  }
+
+  save(employee: Employee) {
+    if (employee.id) {
+      this.store.update(employee);
+    } else {
+      this.store.add(employee);
+    }
+    this.drawer()?.close();
+  }
+
+  close() {
+    this.drawer()?.close();
+    this.selectedEmployee.set(undefined);
   }
 }

@@ -6,6 +6,9 @@ import { MatToolbar } from '@angular/material/toolbar';
 import { AsyncPipe } from '@angular/common';
 import { MatListItem, MatNavList } from '@angular/material/list';
 import {
+  MatDrawer,
+  MatDrawerContainer,
+  MatDrawerContent,
   MatSidenav,
   MatSidenavContainer,
   MatSidenavContent,
@@ -29,6 +32,9 @@ import { MatBadge } from '@angular/material/badge';
     MatBadge,
     RouterLink,
     RouterLinkActive,
+    MatDrawer,
+    MatDrawerContainer,
+    MatDrawerContent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

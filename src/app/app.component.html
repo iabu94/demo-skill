@@ -1,5 +1,5 @@
 <mat-toolbar class="main-toolbar">
-  <button mat-icon-button>
+  <button mat-icon-button (click)="drawer.toggle()">
     <mat-icon class="text-white">apps</mat-icon>
   </button>
   <h2 class="text-white">Check Online</h2>
@@ -18,28 +18,18 @@
       <a mat-list-item routerLink="/dashboard" routerLinkActive="active">
         <span class="text-white">Dashboard</span>
       </a>
-    </mat-nav-list>
-    <mat-nav-list>
       <a mat-list-item routerLink="/employees" routerLinkActive="active">
         <span class="text-white">Employees</span>
       </a>
-    </mat-nav-list>
-    <mat-nav-list>
       <a mat-list-item routerLink="/report" routerLinkActive="active">
         <span class="text-white">Report</span>
       </a>
-    </mat-nav-list>
-    <mat-nav-list>
       <a mat-list-item routerLink="/admin-settings" routerLinkActive="active">
         <span class="text-white">Admin Settings</span>
       </a>
-    </mat-nav-list>
-    <mat-nav-list>
       <a mat-list-item routerLink="/help-center" routerLinkActive="active">
         <span class="text-white">Help Center</span>
       </a>
-    </mat-nav-list>
-    <mat-nav-list>
       <a mat-list-item routerLink="/archive" routerLinkActive="active">
         <span class="text-white">Archive</span>
       </a>

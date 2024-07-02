@@ -3,6 +3,10 @@
     <span class="text-2xl">Dashboard</span>
     <span class="p-2"> > </span>
     <span class="text-xl">Employees</span>
+    <span class="spacer"></span>
+    <button mat-icon-button class="rounded" (click)="drawer1.toggle()">
+      <mat-icon class="bg-blue-600 text-white">add</mat-icon>
+    </button>
   </div>
 
   <div class="employee-table">
@@ -10,41 +14,22 @@
       <mat-label>Search Employees</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
     </mat-form-field>
-
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-      <!-- Position Column -->
-      <ng-container matColumnDef="firstName">
-        <th mat-header-cell *matHeaderCellDef> First Name</th>
-        <td mat-cell *matCellDef="let element"> {{ element.firstName }}</td>
-      </ng-container>
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="lastName">
-        <th mat-header-cell *matHeaderCellDef> Last Name</th>
-        <td mat-cell *matCellDef="let element"> {{ element.lastName }}</td>
-      </ng-container>
-
-      <!-- Weight Column -->
-      <ng-container matColumnDef="phone">
-        <th mat-header-cell *matHeaderCellDef> Phone</th>
-        <td mat-cell *matCellDef="let element"> {{ element.phone }}</td>
-      </ng-container>
-
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef> Status</th>
-        <td mat-cell *matCellDef="let element"> {{ element.status }}</td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-      <!-- Row shown when there is no matching data. -->
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No data matching the filter "{{ input.value }}"</td>
-      </tr>
-    </table>
-
+    <app-employee-list
+      [employees]="store.employees()"
+      [searchKey]="searchKey()"
+      (remove)="remove($event)"
+      (edit)="edit($event)"
+    />
   </div>
 </div>
+
+
+<mat-drawer #drawer1 mode="over" position="end">
+  @defer (when drawer1.opened) {
+    <app-employee-form
+      (close)="close()"
+      [employee]="selectedEmployee()"
+      (save)="save($event)"
+    />
+  }
+</mat-drawer>
