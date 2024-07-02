@@ -27,5 +27,9 @@
       "edit": "تصحيح",
       "delete": "حذف"
     }
+  },
+  "status": {
+    "active": "نشيط",
+    "inactive": "غير نشط"
   }
 }

@@ -24,6 +24,8 @@ import {
 } from '@angular/material/menu';
 import { Employee } from '../../models';
 import { TranslateModule } from '@ngx-translate/core';
+import { StatusPipe } from '../../pipes';
+import { StatusDirective } from '../../directives';
 
 @Component({
   selector: 'app-employee-list',
@@ -50,6 +52,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatMenuTrigger,
     MatMenuContent,
     TranslateModule,
+    StatusPipe,
+    StatusDirective,
   ],
   templateUrl: './employee-list.component.html',
   styleUrl: './employee-list.component.scss',

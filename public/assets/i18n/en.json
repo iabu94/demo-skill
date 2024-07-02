@@ -27,5 +27,9 @@
       "edit": "Edit",
       "delete": "Delete"
     }
+  },
+  "status": {
+    "active": "Active",
+    "inactive": "Inactive"
   }
 }
