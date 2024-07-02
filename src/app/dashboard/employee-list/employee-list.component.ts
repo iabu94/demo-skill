@@ -1,4 +1,4 @@
-import { Component, effect, input, output } from '@angular/core';
+import { Component, effect, input, output, viewChild } from '@angular/core';
 import {
   MatCell,
   MatCellDef,
@@ -26,6 +26,7 @@ import { Employee } from '../../models';
 import { TranslateModule } from '@ngx-translate/core';
 import { StatusPipe } from '../../pipes';
 import { StatusDirective } from '../../directives';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 
 @Component({
   selector: 'app-employee-list',
@@ -54,6 +55,7 @@ import { StatusDirective } from '../../directives';
     TranslateModule,
     StatusPipe,
     StatusDirective,
+    MatSortModule,
   ],
   templateUrl: './employee-list.component.html',
   styleUrl: './employee-list.component.scss',
@@ -67,6 +69,8 @@ export class EmployeeListComponent {
 
   dataSource = new MatTableDataSource<Employee>();
 
+  sort = viewChild.required(MatSort);
+
   displayedColumns: string[] = [
     'firstName',
     'lastName',
@@ -79,6 +83,7 @@ export class EmployeeListComponent {
     effect(() => {
       this.dataSource = new MatTableDataSource(this.employees());
       this.dataSource.filter = this.searchKey();
+      this.dataSource.sort = this.sort();
     });
   }
 }
