@@ -34,6 +34,8 @@ import {
 import { MatListItem, MatNavList } from '@angular/material/list';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
+import { DirectionDirective } from '../directives/direction.directive';
+import { TranslateModule } from '@ngx-translate/core';
 
 export interface PeriodicElement {
   name: string;
@@ -90,6 +92,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
     RouterLinkActive,
     MatSidenavContainer,
     EmployeeFormComponent,
+    DirectionDirective,
+    TranslateModule,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',

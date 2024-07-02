@@ -1,0 +1,31 @@
+{
+  "title": "الموظفين",
+  "nav": {
+    "dashboard": "لوحة القيادة",
+    "employees": "الموظفين",
+    "reports": "تقارير",
+    "settings": "الإعدادات",
+    "help": "مساعدة",
+    "archive": "أرشيف"
+  },
+  "language": {
+    "en": "إنجليزي",
+    "ar": "العربية"
+  },
+  "dashboard": {
+    "dashboard": "لوحة القيادة",
+    "employees": "الموظفين",
+    "searchEmployees": "البحث عن الموظفين",
+    "table": {
+      "firstName": "الاسم الأول",
+      "lastName": "الكنية",
+      "phone": "الهاتف",
+      "status": "الحالة",
+      "action": "عمل"
+    },
+    "action": {
+      "edit": "تصحيح",
+      "delete": "حذف"
+    }
+  }
+}

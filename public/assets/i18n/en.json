@@ -1,0 +1,31 @@
+{
+  "title": "Check Online",
+  "nav": {
+    "dashboard": "Dashboard",
+    "employees": "Employees",
+    "reports": "Reports",
+    "settings": "Admin Settings",
+    "help": "Help Center",
+    "archive": "Archive"
+  },
+  "language": {
+    "en": "English",
+    "ar": "Arabic"
+  },
+  "dashboard": {
+    "dashboard": "Dashboard",
+    "employees": "Employees",
+    "searchEmployees": "Search Employees",
+    "table": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "phone": "Phone",
+      "status": "Status",
+      "action": "Action"
+    },
+    "action": {
+      "edit": "Edit",
+      "delete": "Delete"
+    }
+  }
+}

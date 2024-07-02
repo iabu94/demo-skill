@@ -23,6 +23,7 @@ import {
   MatMenuTrigger,
 } from '@angular/material/menu';
 import { Employee } from '../../models';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-employee-list',
@@ -48,6 +49,7 @@ import { Employee } from '../../models';
     MatMenuItem,
     MatMenuTrigger,
     MatMenuContent,
+    TranslateModule,
   ],
   templateUrl: './employee-list.component.html',
   styleUrl: './employee-list.component.scss',

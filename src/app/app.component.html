@@ -1,9 +1,14 @@
-<mat-toolbar class="main-toolbar">
+<mat-toolbar class="main-toolbar" appDirection>
   <button mat-icon-button (click)="drawer.toggle()">
     <mat-icon class="text-white">apps</mat-icon>
   </button>
-  <h2 class="text-white">Check Online</h2>
+  <h2 class="text-white">{{ 'title' | translate }}</h2>
   <span class="toolbar-spacer"></span>
+  <mat-select class="lang-select" (selectionChange)="changeLanguage($event)" [value]="store.language()">
+    @for (lang of languages; track lang.value) {
+      <mat-option [value]="lang.value">{{ lang.label }}</mat-option>
+    }
+  </mat-select>
   <button mat-icon-button>
     <mat-icon class="text-white" matBadge="5" matBadgeColor="primary">notifications</mat-icon>
   </button>
@@ -12,30 +17,30 @@
   </button>
 </mat-toolbar>
 
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container" appDirection>
   <mat-sidenav #drawer class="sidenav" mode="side" opened>
     <mat-nav-list>
       <a mat-list-item routerLink="/dashboard" routerLinkActive="active">
-        <span class="text-white">Dashboard</span>
+        <span class="text-white">{{ 'nav.dashboard' | translate }}</span>
       </a>
       <a mat-list-item routerLink="/employees" routerLinkActive="active">
-        <span class="text-white">Employees</span>
+        <span class="text-white">{{ 'nav.employees' | translate }}</span>
       </a>
       <a mat-list-item routerLink="/report" routerLinkActive="active">
-        <span class="text-white">Report</span>
+        <span class="text-white">{{ 'nav.reports' | translate }}</span>
       </a>
       <a mat-list-item routerLink="/admin-settings" routerLinkActive="active">
-        <span class="text-white">Admin Settings</span>
+        <span class="text-white">{{ 'nav.settings' | translate }}</span>
       </a>
       <a mat-list-item routerLink="/help-center" routerLinkActive="active">
-        <span class="text-white">Help Center</span>
+        <span class="text-white">{{ 'nav.help' | translate }}</span>
       </a>
       <a mat-list-item routerLink="/archive" routerLinkActive="active">
-        <span class="text-white">Archive</span>
+        <span class="text-white">{{ 'nav.archive' | translate }}</span>
       </a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content appRtl="mat-sidenav-content">
     <router-outlet/>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,8 +1,8 @@
-<div class="p-1">
+<div class="p-1" appDirection>
   <div class="breadcrumb flex items-center">
-    <span class="text-2xl">Dashboard</span>
+    <span class="text-2xl">{{ 'dashboard.dashboard' | translate }}</span>
     <span class="p-2"> > </span>
-    <span class="text-xl">Employees</span>
+    <span class="text-xl">{{ 'dashboard.employees' | translate }}</span>
     <span class="spacer"></span>
     <button mat-icon-button class="rounded" (click)="drawer1.toggle()">
       <mat-icon class="bg-blue-600 text-white">add</mat-icon>
@@ -11,7 +11,7 @@
 
   <div class="employee-table">
     <mat-form-field>
-      <mat-label>Search Employees</mat-label>
+      <mat-label>{{ 'dashboard.searchEmployees' | translate }}</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
     </mat-form-field>
     <app-employee-list
@@ -19,6 +19,7 @@
       [searchKey]="searchKey()"
       (remove)="remove($event)"
       (edit)="edit($event)"
+      appDirection
     />
   </div>
 </div>

@@ -11,11 +11,29 @@
 }
 
 .sidenav {
-  width: auto;
+  width: 200px;
   background-color: #1a2c3a;
   border-radius: 0;
 }
 
 .active {
   background-color: #65a9e0;
+}
+
+.lang-select {
+  color: white;
+  width: 150px;
+  background-color: gray;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.mat-sidenav-content {
+  margin-left: 200px;
+  margin-right: 0 !important;
+}
+
+.mat-sidenav-content-rtl {
+  margin-right: 200px;
+  margin-left: 0 !important;
 }

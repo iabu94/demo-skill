@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
@@ -14,6 +14,21 @@ import {
   MatSidenavContent,
 } from '@angular/material/sidenav';
 import { MatBadge } from '@angular/material/badge';
+import {
+  MatOption,
+  MatSelect,
+  MatSelectChange,
+} from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { AppInfoStore } from './store';
+import { DirectionDirective } from './directives/direction.directive';
+import { RtlDirective } from './directives/rtl.directive';
+
+const LANGUAGES = [
+  { value: 'en', label: 'English' },
+  { value: 'ar', label: 'Arabic' },
+];
 
 @Component({
   selector: 'app-root',
@@ -35,8 +50,27 @@ import { MatBadge } from '@angular/material/badge';
     MatDrawer,
     MatDrawerContainer,
     MatDrawerContent,
+    MatSelect,
+    MatOption,
+    FormsModule,
+    TranslateModule,
+    DirectionDirective,
+    RtlDirective,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {}
+export class AppComponent {
+  languages = LANGUAGES;
+
+  translate = inject(TranslateService);
+  readonly store = inject(AppInfoStore);
+
+  constructor() {
+    this.translate.use(this.store.language());
+  }
+
+  changeLanguage(change: MatSelectChange) {
+    this.store.setLanguage(change.value);
+  }
+}
